@@ -7,7 +7,7 @@ import ChapterTitle from './ChapterTitle';
 
 const CourseFlowSection: React.FC = () => {
     return (
-        <section className="w-[90rem] mx-auto flex flex-col items-center pt-[5rem] pb-[7.5rem] gap-[2.5rem] bg-white relative">
+        <section className="w-full max-w-[90rem] mx-auto flex flex-col items-center pt-[5rem] pb-[7.5rem] gap-[2.5rem] bg-white relative">
             <div className="absolute top-[50px] right-0 z-0 opacity-20 pointer-events-none">
                 {/* Optional reusing of ChapterTitle if appropriate, usually top right */}
             </div>
@@ -16,9 +16,9 @@ const CourseFlowSection: React.FC = () => {
                 受講の流れ
             </h2>
 
-            <div className="flex flex-col md:flex-row justify-center items-center gap-[1.25rem] w-full px-5">
+            <div className="flex flex-col min-[769px]:flex-row justify-center items-center gap-[1.25rem] w-full px-5">
                 {/* Step 1 */}
-                <div className="group relative w-[19.375rem] sm:w-full md:w-[19.375rem] flex-shrink-0 mt-[40px] transition-transform duration-300 hover:rotate-3">
+                <div className="group relative w-full max-w-[19.375rem] flex-shrink-0 mt-[40px] transition-transform duration-300 hover:rotate-3">
                     {/* Number Badge */}
                     <div className="absolute -top-[25.5px] left-[50%] -translate-x-[50%] w-[3.1875rem] h-[3.1875rem] flex items-center justify-center z-10">
                         <img src={numberBg} alt="" className="absolute inset-0 w-full h-full" />
@@ -44,7 +44,7 @@ const CourseFlowSection: React.FC = () => {
                 </div>
 
                 {/* Step 2 */}
-                <div className="group relative w-[19.375rem] sm:w-full md:w-[19.375rem] flex-shrink-0 mt-[40px] transition-transform duration-300 hover:-rotate-3">
+                <div className="group relative w-full max-w-[19.375rem] flex-shrink-0 mt-[40px] transition-transform duration-300 hover:-rotate-3">
                     {/* Number Badge */}
                     <div className="absolute -top-[25.5px] left-[50%] -translate-x-[50%] w-[3.1875rem] h-[3.1875rem] flex items-center justify-center z-10">
                         <img src={numberBg} alt="" className="absolute inset-0 w-full h-full" />
@@ -71,7 +71,7 @@ const CourseFlowSection: React.FC = () => {
                 </div>
 
                 {/* Step 3 */}
-                <div className="group relative w-[19.375rem] sm:w-full md:w-[19.375rem] flex-shrink-0 mt-[40px] transition-transform duration-300 hover:rotate-3">
+                <div className="group relative w-full max-w-[19.375rem] flex-shrink-0 mt-[40px] transition-transform duration-300 hover:rotate-3">
                     {/* Number Badge */}
                     <div className="absolute -top-[25.5px] left-[50%] -translate-x-[50%] w-[3.1875rem] h-[3.1875rem] flex items-center justify-center z-10">
                         <img src={numberBg} alt="" className="absolute inset-0 w-full h-full" />

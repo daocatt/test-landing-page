@@ -11,7 +11,7 @@ interface CourseCardProps {
 
 const CourseCard: React.FC<CourseCardProps> = ({ type, title, duration, supportDuration }) => {
     return (
-        <div className="w-[380px] h-[283px] bg-white flex flex-col items-center justify-center shadow-[5px_5px_0_0_#EF6A5A] transition-transform duration-300 hover:-translate-y-2">
+        <div className="w-full max-w-[380px] h-[283px] bg-white flex flex-col items-center justify-center shadow-[5px_5px_0_0_#EF6A5A] transition-transform duration-300 hover:-translate-y-2">
             {/* Type Label */}
             <div className="text-[#ef6a5a] text-[16px] font-normal tracking-[0.08em] mb-[10px]">
                 {type}
@@ -54,21 +54,21 @@ const CoursePriceSection: React.FC = () => {
 
             {/* Price Banner */}
             <div className="flex flex-col items-center gap-[15px] mb-[60px]">
-                <div className="w-[786px] h-[114px] bg-white border-4 border-[#bf5331] rounded-[10px] flex items-center justify-center gap-[40px] px-[20px]">
+                <div className="w-full max-w-[786px] min-h-[114px] bg-white border-4 border-[#bf5331] rounded-[10px] flex flex-col min-[769px]:flex-row items-center justify-center gap-[20px] min-[769px]:gap-[40px] px-[20px] py-[20px] min-[769px]:py-0">
                     {/* Badge */}
-                    <div className="w-[156px] h-[49px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] rounded-[5px] flex items-center justify-center">
+                    <div className="w-[156px] h-[49px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] rounded-[5px] flex items-center justify-center shrink-0">
                         <span className="text-white text-[24px] font-bold">月額料金</span>
                     </div>
 
                     {/* Price Text */}
-                    <div className="flex items-baseline font-bold">
-                        <span className="text-[64px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] bg-clip-text text-transparent">
+                    <div className="flex flex-wrap justify-center items-baseline font-bold">
+                        <span className="text-[40px] min-[769px]:text-[64px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] bg-clip-text text-transparent">
                             10,600円
                         </span>
-                        <span className="text-[32px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] bg-clip-text text-transparent ml-[10px]">
+                        <span className="text-[24px] min-[769px]:text-[32px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] bg-clip-text text-transparent ml-[10px]">
                             (税込)
                         </span>
-                        <span className="text-[64px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] bg-clip-text text-transparent ml-[5px]">
+                        <span className="text-[40px] min-[769px]:text-[64px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] bg-clip-text text-transparent ml-[5px]">
                             〜
                         </span>
                     </div>

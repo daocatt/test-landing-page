@@ -43,15 +43,15 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
     const isImageRight = imagePosition === 'right';
 
     return (
-        <div className={`flex items-start gap-[30px] ${isImageRight ? 'flex-row' : 'flex-row-reverse'} ${className}`}>
+        <div className={`flex flex-col-reverse items-start min-[769px]:items-start gap-[30px] ${isImageRight ? 'min-[769px]:flex-row' : 'min-[769px]:flex-row-reverse'} ${className}`}>
             {/* Text Content */}
-            <div className="flex flex-col items-start p-[30px] shrink-0">
+            <div className="flex flex-col items-start p-4 min-[769px]:p-[30px]">
                 <div className="flex flex-col gap-[16px] items-start">
                     {/* Titles */}
                     <div className="flex flex-col gap-[5px] items-start">
                         {titles.map((line, index) => (
                             <div key={index} className="bg-[#333] flex items-center justify-center px-[5px] py-0">
-                                <p className="font-bold text-[24px] text-white tracking-[1.2px] leading-normal font-sans">
+                                <p className="font-bold text-[1.25rem] min-[769px]:text-[24px] text-white tracking-[1.2px] leading-normal font-sans text-left whitespace-nowrap">
                                     {line}
                                 </p>
                             </div>
@@ -59,11 +59,11 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
                     </div>
 
                     {/* Description and Name */}
-                    <div className="flex flex-col gap-[10px] items-end font-normal text-black w-[368px]">
-                        <p className="text-[16px] leading-[1.5] tracking-[0.48px] font-sans text-left">
+                    <div className="flex flex-col gap-[10px] items-start min-[769px]:items-start font-normal text-black w-full max-w-[368px]">
+                        <p className="text-[14px] min-[769px]:text-[16px] leading-[1.5] tracking-[0.48px] font-sans text-left">
                             {description}
                         </p>
-                        <p className="text-[12px] tracking-[0.36px] font-sans">
+                        <p className="text-[12px] tracking-[0.36px] font-sans text-right w-full">
                             {name}
                         </p>
                     </div>
@@ -72,7 +72,7 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
 
             {/* Image Container */}
             <div
-                className="relative shrink-0 w-[330px] h-[245px] transition-transform duration-300 hover:scale-[1.05]"
+                className="relative shrink-0 w-full max-w-[330px] h-auto aspect-[330/245] self-center min-[769px]:self-auto transition-transform duration-300 hover:scale-[1.05]"
                 style={{
                     boxShadow: '10px 10px 0px 0px rgba(0, 0, 0, 0.25)'
                 }}

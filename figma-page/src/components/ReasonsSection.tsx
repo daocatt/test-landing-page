@@ -15,33 +15,33 @@ const ReasonItem: React.FC<ReasonItemProps> = ({ title, description, imageSrc, p
     const isLeft = position === 'left';
 
     return (
-        <div className="relative w-full h-[17.106rem] shrink-0">
+        <div className="relative w-full min-h-fit min-[769px]:h-[17.106rem] shrink-0 flex flex-col min-[769px]:block pb-8 min-[769px]:pb-0 pt-[3.94rem] min-[769px]:pt-0">
             {/* Element 1: Background Rectangle */}
             <div
-                className="absolute top-1/2 -translate-y-1/2 right-0 w-[41.4375rem] h-[22.625rem] z-10 rounded-[20px]"
+                className="absolute top-[3.94rem] min-[769px]:top-1/2 min-[769px]:-translate-y-1/2 right-0 w-full min-[769px]:w-[41.4375rem] h-[calc(100%-3.94rem)] min-[769px]:h-[22.625rem] z-10 rounded-none min-[769px]:rounded-[20px]"
                 style={{
                     background: 'linear-gradient(81deg, rgba(198, 174, 109, 0.40) 2.76%, rgba(231, 222, 185, 0.40) 52.27%, rgba(202, 182, 126, 0.40) 95.93%)'
                 }}
             />
 
             {/* Element 2: Image */}
-            <div className={`absolute w-[17.375rem] z-20
+            <div className={`relative min-[769px]:absolute w-full max-w-[calc(100%-1.6rem)] min-[769px]:max-w-[17.375rem] mx-auto min-[769px]:mx-0 z-20 mb-6 min-[769px]:mb-0 -mt-[3.94rem] min-[769px]:mt-0
                 ${isLeft
-                    ? 'left-[-4.4rem] top-[0.31rem]'
-                    : 'right-[-2.4rem] -bottom-[2.9rem]'
+                    ? 'min-[769px]:left-[-4.4rem] min-[769px]:top-[0.31rem]'
+                    : 'min-[769px]:right-[-2.4rem] min-[769px]:-bottom-[2.9rem]'
                 }
             `}>
                 <img src={imageSrc} alt="" className="w-full h-auto drop-shadow-xl rounded-[4px]" />
             </div>
 
             {/* Element 3: Text Box */}
-            <div className={`absolute top-[0.31rem] flex flex-col items-start gap-[1rem] z-30
-                ${isLeft ? 'right-[1.88rem] w-[23.375rem]' : 'right-[14rem] w-[26rem]'}
+            <div className={`relative min-[769px]:absolute min-[769px]:top-[0.31rem] flex flex-col items-start gap-[1rem] z-30 px-[2.5rem] min-[769px]:px-0
+                ${isLeft ? 'min-[769px]:right-[1.88rem] min-[769px]:w-[23.375rem]' : 'min-[769px]:right-[14rem] min-[769px]:w-[26rem]'}
             `}>
-                <div className="text-[#333] text-[1.5rem] font-bold tracking-[0.075rem] leading-normal">
+                <div className="text-[#333] text-[1.25rem] min-[769px]:text-[1.5rem] font-bold tracking-[0.075rem] leading-normal text-left">
                     {title}
                 </div>
-                <div className="text-[#333] text-[1rem] font-normal tracking-[0.05rem] leading-[1.8] self-stretch">
+                <div className="text-[#333] text-[0.875rem] min-[769px]:text-[1rem] font-normal tracking-[0.05rem] leading-[1.8] self-stretch text-left">
                     {description}
                 </div>
             </div>
@@ -71,7 +71,7 @@ const ReasonsSection: React.FC = () => {
             </div>
 
             {/* Reasons List Container */}
-            <div className="w-[39.4375rem] flex flex-col items-start gap-[9.375rem]">
+            <div className="w-full max-w-[39.4375rem] flex flex-col items-start gap-[5rem] min-[769px]:gap-[9.375rem]">
 
                 {/* Reason 1 */}
                 <ReasonItem

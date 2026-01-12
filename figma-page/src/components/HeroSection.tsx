@@ -54,69 +54,70 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
 
     return (
         <section
-            className={`relative w-full aspect-[1440/524] max-w-[90rem] mx-auto bg-contain bg-center bg-no-repeat overflow-hidden mt-0 flex justify-center items-center ${className}`}
-            style={{ backgroundImage: `url(${heroBg})` }}
+            className={`relative w-full h-[32.75rem] max-w-[90rem] mx-auto overflow-hidden mt-0 flex justify-center items-center ${className}`}
         >
+            {/* Background Image (Hidden on Mobile) */}
+            <div
+                className="absolute inset-0 z-0 hidden min-[769px]:block bg-cover bg-center bg-no-repeat"
+                style={{ backgroundImage: `url(${heroBg})` }}
+            />
+
             {/* Hero Content Area: 37.5625rem width, 100% height, centered, with padding */}
-            <div className="w-[37.5625rem] h-full flex flex-col justify-center items-center relative py-[4.1875rem] px-[6.46875rem]">
+            <div className="w-full min-[769px]:w-[37.5625rem] h-full flex flex-col justify-center items-center relative z-10 px-[2.31rem] pt-[1.06rem] pb-[2.47rem] min-[769px]:py-[4.1875rem] min-[769px]:px-[6.46875rem]">
                 {/* Item 1: Title Image */}
-                <div className="w-full px-[0.875rem] py-0 mb-4">
+                <div className="w-full max-w-[24rem] min-[769px]:max-w-full px-[0.875rem] py-0 mb-4">
                     <img src={itemTitle} alt="卒業後サポートが一生続く！" className="w-full h-auto object-contain" />
                 </div>
 
                 {/* Item 2: Text Content */}
                 <h1 className="flex flex-col items-center justify-center leading-none select-none min-h-[14rem]">
                     {/* Line 1 */}
-                    <span className="font-bold text-[#333333] text-[1.981875rem] tracking-wide">
+                    <span className="font-bold text-[#333333] text-[1.51869rem] min-[769px]:text-[1.981875rem] leading-normal min-[769px]:leading-none tracking-wide">
                         未経験から最短で
                     </span>
 
                     {/* Line 2 */}
                     <div className="flex items-baseline mt-2">
-                        <span className="font-bold text-[4.954375rem] bg-clip-text text-transparent bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] min-h-[1.2em]">
+                        <span className="font-bold text-[3.79669rem] min-[769px]:text-[4.954375rem] leading-normal min-[769px]:leading-none bg-clip-text text-transparent bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] min-h-[1.2em]">
                             {text1}
                         </span>
-                        <span className="font-bold text-[3.8925rem] bg-clip-text text-transparent bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] min-h-[1.2em]">
+                        <span className="font-bold text-[2.98313rem] min-[769px]:text-[3.8925rem] leading-normal min-[769px]:leading-none bg-clip-text text-transparent bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] min-h-[1.2em]">
                             {text2}
                         </span>
                     </div>
 
                     {/* Line 3 */}
-                    <span className="font-bold text-[2.83125rem] bg-clip-text text-transparent bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] mt-2 min-h-[1.2em]">
+                    <span className="font-bold text-[2.16956rem] min-[769px]:text-[2.83125rem] leading-normal min-[769px]:leading-none bg-clip-text text-transparent bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] mt-2 min-h-[1.2em]">
                         {text3}
                     </span>
                 </h1>
 
                 {/* Item 3: Buttons */}
-                <div className="w-full flex justify-between mt-8">
+                <div className="flex items-center justify-center mt-8 w-full h-[3.09163rem] gap-[0.97631rem] min-[769px]:w-full min-[769px]:h-auto min-[769px]:justify-between min-[769px]:gap-0">
                     {/* Button 1 */}
                     <div
-                        className="flex flex-col justify-center items-center text-center cursor-pointer hover:translate-y-[0.125rem] hover:shadow-[0.125rem_0.125rem_0rem_#333333] transition-all duration-200"
+                        className="flex flex-col justify-center items-center text-center cursor-pointer hover:translate-y-[0.125rem] hover:shadow-[0.125rem_0.125rem_0rem_#333333] transition-all duration-200 w-[8.94938rem] min-[769px]:w-[11.678125rem] h-[3.09163rem] min-[769px]:h-[4.034375rem] px-[0.2rem] min-[769px]:p-0 py-[0.54238rem] shrink-0 whitespace-nowrap"
                         style={{
-                            width: '11.678125rem',
-                            height: '4.034375rem',
                             background: 'linear-gradient(80.56deg, #E6DEC7 2.76%, #EFEBDB 52.27%, #E6DEC7 95.93%)',
                             boxShadow: '0.2831rem 0.2831rem 0rem #333333',
                             borderRadius: '0.495rem',
                         }}
                     >
-                        <span className="font-bold text-[#333333] text-[0.9375rem] leading-tight">最短2ヶ月で</span>
-                        <span className="font-bold text-[#333333] text-[1.1325rem] leading-tight">副業開始できる！</span>
+                        <span className="font-bold text-[#333333] text-[0.86781rem] min-[769px]:text-[0.9375rem] leading-normal min-[769px]:leading-tight">最短2ヶ月で</span>
+                        <span className="font-bold text-[#333333] text-[0.86781rem] min-[769px]:text-[1.1325rem] leading-normal min-[769px]:leading-tight">副業開始できる！</span>
                     </div>
 
                     {/* Button 2 */}
                     <div
-                        className="flex flex-col justify-center items-center text-center cursor-pointer hover:translate-y-[0.125rem] hover:shadow-[0.125rem_0.125rem_0rem_#333333] transition-all duration-200"
+                        className="flex flex-col justify-center items-center text-center cursor-pointer hover:translate-y-[0.125rem] hover:shadow-[0.125rem_0.125rem_0rem_#333333] transition-all duration-200 w-[8.94938rem] min-[769px]:w-[11.678125rem] h-[3.09163rem] min-[769px]:h-[4.034375rem] px-[0.2rem] min-[769px]:p-0 py-[0.54238rem] shrink-0 whitespace-nowrap"
                         style={{
-                            width: '11.678125rem',
-                            height: '4.034375rem',
                             background: 'linear-gradient(80.56deg, #E6DEC7 2.76%, #EFEBDB 52.27%, #E6DEC7 95.93%)',
                             boxShadow: '0.2831rem 0.2831rem 0rem #333333',
                             borderRadius: '0.495rem',
                         }}
                     >
-                        <span className="font-bold text-[#333333] text-[0.9375rem] leading-tight">案件紹介</span>
-                        <span className="font-bold text-[#333333] text-[1.1325rem] leading-tight">制作サポート完備！</span>
+                        <span className="font-bold text-[#333333] text-[0.86781rem] min-[769px]:text-[0.9375rem] leading-normal min-[769px]:leading-tight">案件紹介</span>
+                        <span className="font-bold text-[#333333] text-[0.86781rem] min-[769px]:text-[1.1325rem] leading-normal min-[769px]:leading-tight">制作サポート完備！</span>
                     </div>
                 </div>
             </div>

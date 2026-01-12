@@ -12,7 +12,7 @@ interface SupportCardProps {
 
 const SupportCard: React.FC<SupportCardProps> = ({ number, imageSrc, title, description }) => {
     return (
-        <div className="flex flex-col items-start w-[319px] text-white">
+        <div className="flex flex-col items-start w-full max-w-[319px] text-white text-left">
             {/* Image Container with Badge */}
             <div className="relative w-full h-[223px] mb-[20px] rounded-[4px] overflow-hidden">
                 <img src={imageSrc} alt="" className="w-full h-full object-cover" />
@@ -37,11 +37,11 @@ const SupportCard: React.FC<SupportCardProps> = ({ number, imageSrc, title, desc
 
 const SupportSection: React.FC = () => {
     return (
-        <section className="relative w-full h-[47.4rem]">
+        <section className="relative w-full min-h-fit min-[769px]:h-[56.34375rem] py-0">
             {/* Background Shape */}
-            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-full h-[47.4rem] bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] z-0 skew-y-3 origin-center" />
+            <div className="absolute left-[-5%] top-1/2 -translate-y-1/2 w-[110%] h-[40rem] min-[769px]:h-[56.34375rem] bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] z-0 min-[769px]:skew-y-[4deg] skew-y-[4deg] origin-center" />
 
-            <div className="relative z-10 w-full max-w-[1440px] mx-auto h-full flex flex-col justify-center items-center">
+            <div className="relative z-10 w-full max-w-[1440px] mx-auto min-h-fit min-[769px]:h-[56.34375rem] flex flex-col justify-center items-center py-0">
 
                 {/* Section Title */}
                 <div className="mb-[60px] text-center">

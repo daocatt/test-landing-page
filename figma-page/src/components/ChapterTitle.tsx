@@ -14,7 +14,7 @@ const ChapterTitle: React.FC<ChapterTitleProps> = ({
     className = ""
 }) => {
     return (
-        <div className={`select-none ${className}`}>
+        <div className={`hidden min-[769px]:block select-none ${className}`}>
             <p
                 className="font-bold text-[#efefef] text-[165px] leading-none tracking-[1.65px] text-center whitespace-nowrap"
                 style={{

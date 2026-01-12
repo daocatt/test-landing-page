@@ -4,6 +4,7 @@ import chatbox from '../assets/images/chatbox.svg';
 import chatboxDot1 from '../assets/images/chatbox-dot-1.svg';
 import chatboxDot2 from '../assets/images/chatbox-dot-2.svg';
 import underDecoration from '../assets/images/underline-decoration.svg';
+import consultationMobileBg from '../assets/images/mobile/consult-bg.png';
 
 interface BottomCTASectionProps {
     className?: string;
@@ -13,11 +14,9 @@ const BottomCTASection: React.FC<BottomCTASectionProps> = ({ className = '' }) =
     return (
         <section
             id="cta-bottom"
-            className={`w-full max-w-[90rem] mx-auto flex flex-col items-center py-[5rem] gap-[2.5rem] relative overflow-hidden ${className}`}
+            className={`w-full max-w-[90rem] mx-auto flex flex-col items-center py-[5rem] gap-[2.5rem] relative overflow-hidden ${className} bg-cover bg-no-repeat bg-[center_top] min-[769px]:bg-[right_center]`}
             style={{
-                background: `linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%), url(${consultationBg}) lightgray 50% / contain no-repeat`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
+                backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%), url(${window.innerWidth < 769 ? consultationMobileBg : consultationBg})`,
             }}
         >
 
@@ -25,9 +24,9 @@ const BottomCTASection: React.FC<BottomCTASectionProps> = ({ className = '' }) =
             <div className="flex flex-col items-center gap-[40px] w-full">
 
                 {/* Speech Bubbles */}
-                <div className="flex flex-col md:flex-row gap-[2.5rem] items-center">
-                    {/* Bubble 1: Left */}
-                    <div className="relative w-[13rem] h-[8.25rem]">
+                <div className="flex flex-col min-[769px]:flex-row gap-[2.5rem] items-center justify-center w-full min-[769px]:w-auto px-5 min-[769px]:px-0">
+                    {/* Bubble 1: Right aligned on mobile */}
+                    <div className="relative w-[13rem] h-[8.25rem] self-end min-[769px]:self-auto">
                         <div className="absolute top-0 left-0 w-full h-[6.5625rem] z-10">
                             <img src={chatbox} alt="" className="absolute inset-0 w-full h-full drop-shadow-[2px_2px_0_#333]" />
                             <div className="absolute inset-0 flex items-center justify-center pb-[0.625rem]">
@@ -48,8 +47,8 @@ const BottomCTASection: React.FC<BottomCTASectionProps> = ({ className = '' }) =
                         />
                     </div>
 
-                    {/* Bubble 2: Right */}
-                    <div className="relative w-[13rem] h-[8.25rem]">
+                    {/* Bubble 2: Left aligned on mobile */}
+                    <div className="relative w-[13rem] h-[8.25rem] self-start min-[769px]:self-auto">
                         <div className="absolute top-0 left-0 w-full h-[6.5625rem] z-10">
                             <img src={chatbox} alt="" className="absolute inset-0 w-full h-full drop-shadow-[2px_2px_0_#333]" />
                             <div className="absolute inset-0 flex items-center justify-center pb-[0.625rem]">
@@ -76,17 +75,17 @@ const BottomCTASection: React.FC<BottomCTASectionProps> = ({ className = '' }) =
                     <div className="flex flex-col items-center gap-[1.25rem]">
 
                         {/* Title Group */}
-                        <div className="w-[42.25rem] flex flex-col justify-center items-center gap-[1rem]">
-                            <h2 className="text-white text-[2.25rem] font-bold tracking-[0.1125rem] leading-normal text-center whitespace-nowrap">
+                        <div className="w-full max-w-[42.25rem] flex flex-col justify-center items-center gap-[1rem] px-5">
+                            <h2 className="text-white text-[1.5rem] min-[769px]:text-[2.25rem] font-bold tracking-[0.1125rem] leading-normal text-center">
                                 無料カウンセリングでは、
                             </h2>
-                            <h2 className="text-white text-[2.25rem] font-bold tracking-[0.1125rem] leading-normal text-center whitespace-nowrap">
+                            <h2 className="text-white text-[1.5rem] min-[769px]:text-[2.25rem] font-bold tracking-[0.1125rem] leading-normal text-center">
                                 各コースのカリキュラム詳細もご案内！
                             </h2>
                             <img
                                 src={underDecoration}
                                 alt=""
-                                className="w-full h-auto"
+                                className="w-full h-auto max-w-[20rem] min-[769px]:max-w-none"
                             />
                         </div>
 
@@ -107,10 +106,10 @@ const BottomCTASection: React.FC<BottomCTASectionProps> = ({ className = '' }) =
                         {/* Button */}
                         <a
                             href="#consultation"
-                            className="w-96 h-16 bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] rounded-[0.4375rem] flex items-center justify-center relative transition-all duration-200 hover:shadow-[0px_4px_0px_0px_#A04A36] hover:-translate-y-[2px]"
+                            className="w-full max-w-96 h-16 bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] rounded-[0.4375rem] flex items-center justify-center relative transition-all duration-200 hover:shadow-[0px_4px_0px_0px_#A04A36] hover:-translate-y-[2px]"
                         >
                             <div className="flex items-center gap-[15px]">
-                                <span className="text-white text-2xl font-bold">
+                                <span className="text-white text-xl min-[769px]:text-2xl font-bold">
                                     Zoom無料相談はこちら
                                 </span>
                             </div>

@@ -8,27 +8,27 @@ interface InstructorCardProps {
 
 const InstructorCard: React.FC<InstructorCardProps> = ({ name, enName }) => {
     return (
-        <div className="w-[466px] flex flex-col items-center bg-white border-2 border-[#bf5331] shrink-0">
+        <div className="w-full max-w-[466px] flex flex-col items-center bg-white border-2 border-[#bf5331] shrink-0">
             {/* Header / Top Profile Section */}
-            <div className="w-full h-[137px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] flex items-center px-[30px] gap-[16px] relative">
+            <div className="w-[20.625rem] min-[769px]:w-full h-[137px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] flex items-center justify-center min-[769px]:justify-start p-[0.625rem] min-[769px]:px-[30px] gap-4 min-[769px]:gap-1 relative">
                 {/* Name Info */}
-                <div className="flex flex-col items-start min-w-[242px] z-10 text-white">
-                    <div className="text-[29px] font-bold leading-none mb-1">
+                <div className="flex flex-col items-start min-w-0 z-10 text-white">
+                    <div className="text-[1.5rem] font-bold leading-normal tracking-[0.075rem] mb-1">
                         {name}
                     </div>
-                    <div className="text-[19px] font-bold leading-none">
+                    <div className="text-[1rem] font-medium leading-normal tracking-[0.05rem]">
                         {enName}
                     </div>
                 </div>
 
                 {/* Photo (Circular Mask) */}
-                <div className="absolute right-[30px] top-[10px] w-[117px] h-[117px] rounded-full overflow-hidden border-[4px] border-white/0">
+                <div className="relative min-[769px]:absolute min-[769px]:right-2 min-[769px]:top-[10px] w-[7.3125rem] h-[7.3125rem] rounded-full overflow-hidden border-[4px] border-white/0 shrink-0">
                     <img src={instructorPhoto} alt={name} className="w-full h-full object-cover" />
                 </div>
             </div>
 
             {/* Content Body */}
-            <div className="w-full p-[30px] pb-[40px] flex flex-col gap-[28px]">
+            <div className="w-full p-[10px] min-[769px]:p-[30px] min-[769px]:pb-[40px] flex flex-col gap-[28px]">
 
                 {/* Career Section */}
                 <div className="flex flex-col gap-[10px]">
@@ -91,36 +91,39 @@ const InstructorsSection: React.FC = () => {
         setCurrentIndex((prev) => (prev - 2 < 0 ? items.length - 2 : prev - 2));
     };
 
-    // Calculate translation width: card width (466) + gap (40)
-    // When index increases by 1, we move 1 unit.
-    // When index increases by 2 (next page), we move 2 units.
-    const slideDistance = currentIndex * (466 + 40);
+    // Width = card width + gap
+    // Mobile: 20.625rem = 330px, gap-4 = 16px
+    // Desktop: 466px, gap = 40px
+    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 769 : false;
+    const cardWidth = isMobile ? 330 : 466;
+    const gap = isMobile ? 16 : 40;
+    const slideDistance = currentIndex * (cardWidth + gap);
 
     return (
-        <section className="w-full bg-[#FAFAFA] py-[80px] flex flex-col items-center">
-            <div className="w-full max-w-[1440px] px-[86px] flex flex-col items-center gap-[40px]">
+        <section className="w-full bg-[#FAFAFA] py-[40px] min-[769px]:py-[80px] flex flex-col items-center overflow-hidden">
+            <div className="w-full max-w-[1440px] px-0 min-[769px]:px-[86px] flex flex-col items-center gap-[40px]">
                 {/* Title */}
-                <h2 className="text-[#333] text-[36px] font-bold tracking-[1.8px] leading-normal">
+                <h2 className="text-[#333] text-[1.75rem] min-[769px]:text-[36px] font-bold tracking-[1.8px] leading-normal text-center">
                     講師紹介
                 </h2>
 
                 {/* Carousel Container */}
-                <div className="flex items-center gap-[40px] w-full justify-center">
+                <div className="flex items-center gap-0 min-[769px]:gap-[40px] w-full justify-center">
 
                     {/* Left Arrow */}
                     <button
                         onClick={handlePrev}
-                        className="flex items-center justify-center w-[48px] h-[48px] text-[#999] hover:text-[#333] cursor-pointer"
+                        className="flex items-center justify-center w-8 h-8 min-[769px]:w-[48px] min-[769px]:h-[48px] text-[#999] hover:text-[#333] cursor-pointer shrink-0"
                     >
-                        <div className="w-0 h-0 border-t-[12px] border-t-transparent border-r-[20px] border-r-current border-b-[12px] border-b-transparent" />
+                        <div className="w-0 h-0 border-t-[8px] min-[769px]:border-t-[12px] border-t-transparent border-r-[14px] min-[769px]:border-r-[20px] border-r-current border-b-[8px] min-[769px]:border-b-[12px] border-b-transparent" />
                     </button>
 
                     {/* Viewport (Window for 2 cards) */}
                     {/* Width = 466*2 + 40 = 972px */}
-                    <div className="w-[972px] overflow-hidden">
+                    <div className="w-full max-w-[972px] overflow-hidden">
                         {/* Moving Track */}
                         <div
-                            className="flex gap-[40px] transition-transform duration-500 ease-in-out"
+                            className="flex gap-4 min-[769px]:gap-[40px] transition-transform duration-500 ease-in-out"
                             style={{ transform: `translateX(-${slideDistance}px)` }}
                         >
                             {items.map((item, index) => (
@@ -132,9 +135,9 @@ const InstructorsSection: React.FC = () => {
                     {/* Right Arrow */}
                     <button
                         onClick={handleNext}
-                        className="flex items-center justify-center w-[48px] h-[48px] text-[#999] hover:text-[#333] cursor-pointer"
+                        className="flex items-center justify-center w-8 h-8 min-[769px]:w-[48px] min-[769px]:h-[48px] text-[#999] hover:text-[#333] cursor-pointer shrink-0"
                     >
-                        <div className="w-0 h-0 border-t-[12px] border-t-transparent border-l-[20px] border-l-current border-b-[12px] border-b-transparent" />
+                        <div className="w-0 h-0 border-t-[8px] min-[769px]:border-t-[12px] border-t-transparent border-l-[14px] min-[769px]:border-l-[20px] border-l-current border-b-[8px] min-[769px]:border-b-[12px] border-b-transparent" />
                     </button>
                 </div>
 

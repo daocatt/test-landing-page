@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from '../assets/images/logo.png';
 
 interface NavbarProps {
@@ -6,6 +6,8 @@ interface NavbarProps {
 }
 
 const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
     const navItems = [
         { label: '受講者の声', href: '#voice' },
         { label: '選ばれる理由', href: '#reason' },
@@ -15,7 +17,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
     ];
 
     return (
-        <nav className={`bg-[#333333] text-white h-[5rem] ${className}`}>
+        <nav className={`bg-[#333333] text-white h-[5rem] relative ${className}`}>
             <div className="w-full px-[2.5rem] h-full">
                 <div className="flex items-center justify-between h-full">
                     {/* Logo */}
@@ -26,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     </div>
 
                     {/* Right Side Content: Navigation + CTA */}
-                    <div className="hidden md:flex items-center gap-[1.875rem]">
+                    <div className="hidden min-[769px]:flex items-center gap-[1.875rem]">
                         {navItems.map((item, index) => (
                             <a
                                 key={index}
@@ -43,13 +45,39 @@ const Navbar: React.FC<NavbarProps> = ({ className = '' }) => {
                     </div>
 
                     {/* Mobile Menu Button */}
-                    <button className="md:hidden text-white">
+                    <button
+                        className="min-[769px]:hidden text-white focus:outline-none"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    >
                         <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                            {isMenuOpen ? (
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                            ) : (
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                            )}
                         </svg>
                     </button>
                 </div>
             </div>
+
+            {/* Mobile Dropdown Menu */}
+            {isMenuOpen && (
+                <div className="min-[769px]:hidden absolute top-[5rem] left-0 w-full bg-[#333333] z-50 flex flex-col items-center py-6 gap-6 shadow-lg border-t border-gray-700">
+                    {navItems.map((item, index) => (
+                        <a
+                            key={index}
+                            href={item.href}
+                            className="text-base font-medium hover:text-[--color-primary] transition-colors duration-200"
+                            onClick={() => setIsMenuOpen(false)}
+                        >
+                            {item.label}
+                        </a>
+                    ))}
+                    <button className="bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] hover:opacity-90 text-white px-8 py-3 rounded text-base font-medium transition-opacity duration-200 cursor-pointer w-[80%] max-w-[300px]">
+                        Zoom無料相談はこちら
+                    </button>
+                </div>
+            )}
         </nav>
     );
 };

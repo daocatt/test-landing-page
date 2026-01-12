@@ -46,12 +46,12 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({ className = '' }) => 
                 </div>
 
                 {/* Content Box */}
-                <div className="flex justify-center items-center gap-[2.5rem]">
+                <div className="flex flex-col min-[769px]:flex-row justify-center items-center gap-[2.5rem]">
                     {/* Left Side: Text */}
-                    <div className="flex flex-col items-start gap-[0.625rem]">
+                    <div className="flex flex-col items-center min-[769px]:items-start gap-[0.625rem]">
                         {/* Line 1 */}
                         {/* Wrapper for the first line with box styling */}
-                        <div className="inline-flex justify-center items-center gap-[0.625rem] px-[0.625rem] py-[0.3125rem] bg-[#333333] self-start max-w-fit">
+                        <div className="inline-flex justify-center items-center gap-[0.625rem] px-[0.625rem] py-[0.3125rem] bg-[#333333] self-center min-[769px]:self-start max-w-fit">
                             <p className="font-bold text-white text-[2.125rem] tracking-[0.10625rem] font-sans leading-normal text-left">
                                 卒業後が"スタート"
                             </p>
@@ -71,7 +71,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({ className = '' }) => 
 
                     {/* Right Side: Image */}
                     <div
-                        className="w-[23.875rem] h-[16.4375rem]"
+                        className="w-[23.875rem] h-[16.4375rem] max-w-full"
                         style={{
                             background: `url(${content1Img}) lightgray 50% / cover no-repeat`
                         }}
@@ -88,7 +88,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({ className = '' }) => 
                 </h2>
 
                 {/* Content Container */}
-                <div className="flex flex-col items-start gap-[5rem] w-[49.25rem]">
+                <div className="flex flex-col items-start gap-[5rem] w-full max-w-[49.25rem] px-5">
                     {/* Item 1: M.S */}
                     <TestimonialCard
                         imageSrc={content2Img}

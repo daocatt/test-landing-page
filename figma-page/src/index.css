@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 @theme {
+  --breakpoint-md: 800px;
   --color-primary: #E85D3F;
   --color-primary-dark: #D54D2F;
   --font-family-sans: 'Noto Sans JP', sans-serif;
@@ -12,5 +13,24 @@ body {
   min-width: 375px;
   margin: 0 auto;
   padding: 0;
-  overflow-x: hidden;
+  /* overflow-x: hidden; */
+}
+
+/* Custom Scrollbar Optimization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(153, 153, 153, 0.4);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(153, 153, 153, 0.6);
 }
