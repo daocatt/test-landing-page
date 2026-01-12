@@ -37,9 +37,9 @@ const SupportCard: React.FC<SupportCardProps> = ({ number, imageSrc, title, desc
 
 const SupportSection: React.FC = () => {
     return (
-        <section className="relative w-full min-h-fit min-[769px]:h-[56.34375rem] py-0">
-            {/* Background Shape */}
-            <div className="absolute left-[-5%] top-1/2 -translate-y-1/2 w-[110%] h-[40rem] min-[769px]:h-[56.34375rem] bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] z-0 min-[769px]:skew-y-[4deg] skew-y-[4deg] origin-center" />
+        <section className="relative w-full min-h-fit min-[769px]:h-[56.34375rem] py-[3.125rem] min-[769px]:py-0 bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] min-[769px]:bg-none">
+            {/* Background Shape (Hidden on Mobile) */}
+            <div className="hidden min-[769px]:block absolute left-[-5%] top-1/2 -translate-y-1/2 w-[110%] min-[769px]:h-[56.34375rem] bg-gradient-to-r from-[#BF5331] to-[#EF6A5A] z-0 min-[769px]:skew-y-[4deg] origin-center" />
 
             <div className="relative z-10 w-full max-w-[1440px] mx-auto min-h-fit min-[769px]:h-[56.34375rem] flex flex-col justify-center items-center py-0">
 

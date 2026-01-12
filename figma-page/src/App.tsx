@@ -23,7 +23,7 @@ function App() {
       <Navbar />
       <HeroSection />
       {/* Mobile-only image section */}
-      <div className="md:hidden w-full">
+      <div className="md:hidden w-full relative z-10 -mt-[4.25rem]">
         <img src={mobile1} alt="" className="w-full h-auto" />
       </div>
       <CTASection />

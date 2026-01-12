@@ -18,14 +18,14 @@ const ReasonItem: React.FC<ReasonItemProps> = ({ title, description, imageSrc, p
         <div className="relative w-full min-h-fit min-[769px]:h-[17.106rem] shrink-0 flex flex-col min-[769px]:block pb-8 min-[769px]:pb-0 pt-[3.94rem] min-[769px]:pt-0">
             {/* Element 1: Background Rectangle */}
             <div
-                className="absolute top-[3.94rem] min-[769px]:top-1/2 min-[769px]:-translate-y-1/2 right-0 w-full min-[769px]:w-[41.4375rem] h-[calc(100%-3.94rem)] min-[769px]:h-[22.625rem] z-10 rounded-none min-[769px]:rounded-[20px]"
+                className="absolute top-[5rem] min-[769px]:top-1/2 min-[769px]:-translate-y-1/2 right-0 w-full min-[769px]:w-[41.4375rem] h-[calc(100%-5rem)] min-[769px]:h-[22.625rem] z-10 rounded-none min-[769px]:rounded-[20px]"
                 style={{
                     background: 'linear-gradient(81deg, rgba(198, 174, 109, 0.40) 2.76%, rgba(231, 222, 185, 0.40) 52.27%, rgba(202, 182, 126, 0.40) 95.93%)'
                 }}
             />
 
             {/* Element 2: Image */}
-            <div className={`relative min-[769px]:absolute w-full max-w-[calc(100%-1.6rem)] min-[769px]:max-w-[17.375rem] mx-auto min-[769px]:mx-0 z-20 mb-6 min-[769px]:mb-0 -mt-[3.94rem] min-[769px]:mt-0
+            <div className={`relative min-[769px]:absolute w-full max-w-[calc(100%-1.6rem)] min-[769px]:max-w-[17.375rem] mx-auto min-[769px]:mx-0 z-20 mb-6 min-[769px]:mb-0 -mt-[5rem] min-[769px]:mt-0
                 ${isLeft
                     ? 'min-[769px]:left-[-4.4rem] min-[769px]:top-[0.31rem]'
                     : 'min-[769px]:right-[-2.4rem] min-[769px]:-bottom-[2.9rem]'

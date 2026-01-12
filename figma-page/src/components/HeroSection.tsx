@@ -63,7 +63,7 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
             />
 
             {/* Hero Content Area: 37.5625rem width, 100% height, centered, with padding */}
-            <div className="w-full min-[769px]:w-[37.5625rem] h-full flex flex-col justify-center items-center relative z-10 px-[2.31rem] pt-[1.06rem] pb-[2.47rem] min-[769px]:py-[4.1875rem] min-[769px]:px-[6.46875rem]">
+            <div className="w-full min-[769px]:w-[37.5625rem] h-full flex flex-col justify-center items-center relative z-10 px-[2.31rem] pt-[1.06rem] pb-[6.25rem] min-[769px]:py-[4.1875rem] min-[769px]:px-[6.46875rem]">
                 {/* Item 1: Title Image */}
                 <div className="w-full max-w-[24rem] min-[769px]:max-w-full px-[0.875rem] py-0 mb-4">
                     <img src={itemTitle} alt="卒業後サポートが一生続く！" className="w-full h-auto object-contain" />
@@ -121,6 +121,14 @@ const HeroSection: React.FC<HeroSectionProps> = ({ className = '' }) => {
                     </div>
                 </div>
             </div>
+
+            {/* Bottom Gradient Overlay (Mobile Only) */}
+            <div
+                className="min-[769px]:hidden absolute bottom-0 left-0 w-full h-[4.25rem] z-20 pointer-events-none"
+                style={{
+                    background: 'linear-gradient(to bottom, white 0%, white 20%, transparent 100%)'
+                }}
+            />
         </section>
     );
 };

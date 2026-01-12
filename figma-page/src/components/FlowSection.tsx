@@ -19,13 +19,13 @@ interface StepItemProps {
 
 const StepItem: React.FC<StepItemProps> = ({ number, title, description, icon }) => {
     return (
-        <div className="relative flex flex-col min-[769px]:flex-row w-full max-w-[53.25rem] pl-[1rem] min-[769px]:pl-[3.125rem] pr-[1rem] min-[769px]:pr-[1.875rem] py-[1.5rem] min-[769px]:py-[0.9375rem] items-center gap-[1.25rem] bg-white mb-[1.25rem] shadow-md rounded-[5px]">
+        <div className="relative flex flex-col min-[769px]:flex-row w-full max-w-[53.25rem] pl-[1rem] min-[769px]:pl-[3.125rem] pr-[1rem] min-[769px]:pr-[1.875rem] py-[1.5rem] min-[769px]:py-[0.9375rem] items-start min-[769px]:items-center gap-[1.25rem] bg-white mb-[1.25rem] shadow-md rounded-[5px]">
             {/* Number Badge */}
             <div
-                className="absolute top-0 left-0 flex items-center justify-center w-[2.25rem] h-[1.8rem] bg-gradient-to-r from-[#C9583A] to-[#CB583B]"
+                className="absolute top-0 left-0 flex items-center justify-center w-[3.0625rem] min-[769px]:w-[2.25rem] h-[2.5rem] min-[769px]:h-[1.8rem] bg-gradient-to-r from-[#C9583A] to-[#CB583B]"
                 style={{ borderRadius: '0 0 1.35938rem 0' }}
             >
-                <span className="text-white text-[0.875rem] font-bold font-sans leading-none">
+                <span className="text-white text-[1.5rem] min-[769px]:text-[0.875rem] font-bold font-sans leading-none">
                     {number}
                 </span>
             </div>
@@ -39,7 +39,7 @@ const StepItem: React.FC<StepItemProps> = ({ number, title, description, icon })
             </div>
 
             {/* Content description */}
-            <div className="flex-1 text-[#333] text-[0.875rem] min-[769px]:text-[1rem] font-normal leading-[1.4] min-[769px]:leading-[120%] tracking-[0.05rem] text-center min-[769px]:text-left">
+            <div className="flex-1 text-[#333] text-[0.875rem] min-[769px]:text-[1rem] font-normal leading-[1.4] min-[769px]:leading-[120%] tracking-[0.05rem] text-left">
                 {description}
             </div>
         </div>

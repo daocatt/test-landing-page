@@ -14,14 +14,26 @@ const BottomCTASection: React.FC<BottomCTASectionProps> = ({ className = '' }) =
     return (
         <section
             id="cta-bottom"
-            className={`w-full max-w-[90rem] mx-auto flex flex-col items-center py-[5rem] gap-[2.5rem] relative overflow-hidden ${className} bg-cover bg-no-repeat bg-[center_top] min-[769px]:bg-[right_center]`}
-            style={{
-                backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%), url(${window.innerWidth < 769 ? consultationMobileBg : consultationBg})`,
-            }}
+            className={`w-full max-w-[90rem] mx-auto flex flex-col items-center py-[5rem] gap-[2.5rem] relative overflow-hidden ${className} bg-cover bg-no-repeat`}
         >
+            {/* Desktop Background */}
+            <div
+                className="absolute inset-0 z-0 hidden min-[769px]:block bg-cover bg-no-repeat bg-[center_top] min-[769px]:bg-[right_center]"
+                style={{
+                    backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%), url(${consultationBg})`,
+                }}
+            />
+
+            {/* Mobile Background */}
+            <div
+                className="absolute inset-0 z-0 min-[769px]:hidden bg-cover bg-no-repeat bg-[center_top]"
+                style={{
+                    backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.60) 0%, rgba(0, 0, 0, 0.60) 100%), url(${consultationMobileBg})`,
+                }}
+            />
 
             {/* Content Container */}
-            <div className="flex flex-col items-center gap-[40px] w-full">
+            <div className="relative z-10 flex flex-col items-center gap-[40px] w-full">
 
                 {/* Speech Bubbles */}
                 <div className="flex flex-col min-[769px]:flex-row gap-[2.5rem] items-center justify-center w-full min-[769px]:w-auto px-5 min-[769px]:px-0">
@@ -75,21 +87,21 @@ const BottomCTASection: React.FC<BottomCTASectionProps> = ({ className = '' }) =
                     <div className="flex flex-col items-center gap-[1.25rem]">
 
                         {/* Title Group */}
-                        <div className="w-full max-w-[42.25rem] flex flex-col justify-center items-center gap-[1rem] px-5">
+                        <div className="w-full max-w-[42.25rem] flex flex-col justify-center items-center gap-[0.5rem] min-[769px]:gap-[1rem] px-5">
                             <h2 className="text-white text-[1.5rem] min-[769px]:text-[2.25rem] font-bold tracking-[0.1125rem] leading-normal text-center">
                                 無料カウンセリングでは、
                             </h2>
-                            <h2 className="text-white text-[1.5rem] min-[769px]:text-[2.25rem] font-bold tracking-[0.1125rem] leading-normal text-center">
+                            <h2 className="text-white text-[1.5rem] min-[769px]:text-[2.25rem] font-bold tracking-[0.1125rem] leading-normal text-center min-[769px]:whitespace-nowrap">
                                 各コースのカリキュラム詳細もご案内！
                             </h2>
                             <img
                                 src={underDecoration}
                                 alt=""
-                                className="w-full h-auto max-w-[20rem] min-[769px]:max-w-none"
+                                className="w-[18.875rem] h-[0.1875rem] max-w-full min-[769px]:w-auto min-[769px]:h-auto"
                             />
                         </div>
 
-                        <p className="text-white text-[1rem] font-bold leading-[180%] tracking-[0.05rem] text-center">
+                        <p className="text-white text-[1rem] font-bold leading-[180%] tracking-[0.05rem] text-center px-5">
                             気になる疑問/相談は全てプロのカウンセラーが即解消！
                         </p>
                     </div>

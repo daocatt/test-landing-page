@@ -15,14 +15,26 @@ const ConsultationSection: React.FC<ConsultationSectionProps> = ({ className = '
     return (
         <section
             id="consultation"
-            className={`w-full max-w-[90rem] mx-auto flex flex-col items-center py-[5rem] gap-[2.5rem] relative overflow-hidden ${className} bg-cover bg-no-repeat bg-[center_top] min-[769px]:bg-[right_center]`}
-            style={{
-                backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url(${window.innerWidth < 769 ? consultationMobileBg : consultationBg})`,
-            }}
+            className={`w-full max-w-[90rem] mx-auto flex flex-col items-center py-[5rem] gap-[2.5rem] relative overflow-hidden ${className} bg-cover bg-no-repeat`}
         >
+            {/* Desktop Background */}
+            <div
+                className="absolute inset-0 z-0 hidden min-[769px]:block bg-cover bg-no-repeat bg-[center_top] min-[769px]:bg-[right_center]"
+                style={{
+                    backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url(${consultationBg})`,
+                }}
+            />
+
+            {/* Mobile Background */}
+            <div
+                className="absolute inset-0 z-0 min-[769px]:hidden bg-cover bg-no-repeat bg-[center_top]"
+                style={{
+                    backgroundImage: `linear-gradient(0deg, rgba(0, 0, 0, 0.6) 0%, rgba(0, 0, 0, 0.6) 100%), url(${consultationMobileBg})`,
+                }}
+            />
 
             {/* Content Container */}
-            <div className="flex flex-col items-center gap-[40px] w-full">
+            <div className="relative z-10 flex flex-col items-center gap-[40px] w-full">
 
                 {/* Speech Bubbles */}
                 <div className="flex flex-col min-[769px]:flex-row gap-[2.5rem] items-center justify-center w-full min-[769px]:w-auto px-5 min-[769px]:px-0">

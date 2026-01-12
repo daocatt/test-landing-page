@@ -8,9 +8,9 @@ interface InstructorCardProps {
 
 const InstructorCard: React.FC<InstructorCardProps> = ({ name, enName }) => {
     return (
-        <div className="w-full max-w-[466px] flex flex-col items-center bg-white border-2 border-[#bf5331] shrink-0">
+        <div className="w-[calc(100vw-40px)] min-[769px]:w-full min-[769px]:max-w-[466px] flex flex-col items-center bg-white border-2 border-[#bf5331] shrink-0">
             {/* Header / Top Profile Section */}
-            <div className="w-[20.625rem] min-[769px]:w-full h-[137px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] flex items-center justify-center min-[769px]:justify-start p-[0.625rem] min-[769px]:px-[30px] gap-4 min-[769px]:gap-1 relative">
+            <div className="w-full h-[137px] bg-gradient-to-r from-[#bf5331] to-[#ef6a5a] flex items-center justify-between min-[769px]:justify-start px-4 py-[10px] min-[769px]:px-[30px] gap-4 min-[769px]:gap-1 relative">
                 {/* Name Info */}
                 <div className="flex flex-col items-start min-w-0 z-10 text-white">
                     <div className="text-[1.5rem] font-bold leading-normal tracking-[0.075rem] mb-1">
@@ -80,23 +80,57 @@ const InstructorsSection: React.FC = () => {
     ];
 
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' ? window.innerWidth < 769 : false);
+
+    const touchStartX = React.useRef(0);
+    const touchEndX = React.useRef(0);
+
+    React.useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 769);
+        };
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
+
+    const step = isMobile ? 1 : 2;
 
     const handleNext = () => {
-        // Move by 2 items. If at end, loop to start.
-        setCurrentIndex((prev) => (prev + 2 >= items.length ? 0 : prev + 2));
+        setCurrentIndex((prev) => (prev + step >= items.length ? 0 : prev + step));
     };
 
     const handlePrev = () => {
-        // Move back by 2 items.
-        setCurrentIndex((prev) => (prev - 2 < 0 ? items.length - 2 : prev - 2));
+        setCurrentIndex((prev) => (prev - step < 0 ? items.length - step : prev - step));
+    };
+
+    // Touch handlers for mobile swiping
+    const onTouchStart = (e: React.TouchEvent) => {
+        touchStartX.current = e.targetTouches[0].clientX;
+    };
+
+    const onTouchMove = (e: React.TouchEvent) => {
+        touchEndX.current = e.targetTouches[0].clientX;
+    };
+
+    const onTouchEnd = () => {
+        if (!touchStartX.current || !touchEndX.current) return;
+        const diff = touchStartX.current - touchEndX.current;
+        const threshold = 50; // Minimum swipe distance in px
+
+        if (diff > threshold) {
+            handleNext();
+        } else if (diff < -threshold) {
+            handlePrev();
+        }
+
+        // Reset
+        touchStartX.current = 0;
+        touchEndX.current = 0;
     };
 
     // Width = card width + gap
-    // Mobile: 20.625rem = 330px, gap-4 = 16px
-    // Desktop: 466px, gap = 40px
-    const isMobile = typeof window !== 'undefined' ? window.innerWidth < 769 : false;
-    const cardWidth = isMobile ? 330 : 466;
-    const gap = isMobile ? 16 : 40;
+    const cardWidth = isMobile ? (window.innerWidth - 40) : 466;
+    const gap = isMobile ? 8 : 40;
     const slideDistance = currentIndex * (cardWidth + gap);
 
     return (
@@ -108,22 +142,26 @@ const InstructorsSection: React.FC = () => {
                 </h2>
 
                 {/* Carousel Container */}
-                <div className="flex items-center gap-0 min-[769px]:gap-[40px] w-full justify-center">
+                <div className="flex items-center gap-0 min-[769px]:gap-[40px] w-full justify-between min-[769px]:justify-center px-0">
 
                     {/* Left Arrow */}
                     <button
                         onClick={handlePrev}
-                        className="flex items-center justify-center w-8 h-8 min-[769px]:w-[48px] min-[769px]:h-[48px] text-[#999] hover:text-[#333] cursor-pointer shrink-0"
+                        className="flex items-center justify-center w-5 h-5 min-[769px]:w-[48px] min-[769px]:h-[48px] text-[#999] hover:text-[#333] cursor-pointer shrink-0"
                     >
-                        <div className="w-0 h-0 border-t-[8px] min-[769px]:border-t-[12px] border-t-transparent border-r-[14px] min-[769px]:border-r-[20px] border-r-current border-b-[8px] min-[769px]:border-b-[12px] border-b-transparent" />
+                        <div className="w-0 h-0 border-t-[5px] min-[769px]:border-t-[12px] border-t-transparent border-r-[8px] min-[769px]:border-r-[20px] border-r-current border-b-[5px] min-[769px]:border-b-[12px] border-b-transparent" />
                     </button>
 
                     {/* Viewport (Window for 2 cards) */}
-                    {/* Width = 466*2 + 40 = 972px */}
-                    <div className="w-full max-w-[972px] overflow-hidden">
+                    <div
+                        className="flex-1 min-[769px]:flex-none min-[769px]:w-full min-[769px]:max-w-[972px] overflow-hidden"
+                        onTouchStart={onTouchStart}
+                        onTouchMove={onTouchMove}
+                        onTouchEnd={onTouchEnd}
+                    >
                         {/* Moving Track */}
                         <div
-                            className="flex gap-4 min-[769px]:gap-[40px] transition-transform duration-500 ease-in-out"
+                            className="flex gap-2 min-[769px]:gap-[40px] transition-transform duration-500 ease-in-out"
                             style={{ transform: `translateX(-${slideDistance}px)` }}
                         >
                             {items.map((item, index) => (
@@ -135,24 +173,21 @@ const InstructorsSection: React.FC = () => {
                     {/* Right Arrow */}
                     <button
                         onClick={handleNext}
-                        className="flex items-center justify-center w-8 h-8 min-[769px]:w-[48px] min-[769px]:h-[48px] text-[#999] hover:text-[#333] cursor-pointer shrink-0"
+                        className="flex items-center justify-center w-5 h-5 min-[769px]:w-[48px] min-[769px]:h-[48px] text-[#999] hover:text-[#333] cursor-pointer shrink-0"
                     >
-                        <div className="w-0 h-0 border-t-[8px] min-[769px]:border-t-[12px] border-t-transparent border-l-[14px] min-[769px]:border-l-[20px] border-l-current border-b-[8px] min-[769px]:border-b-[12px] border-b-transparent" />
+                        <div className="w-0 h-0 border-t-[5px] min-[769px]:border-t-[12px] border-t-transparent border-l-[8px] min-[769px]:border-l-[20px] border-l-current border-b-[5px] min-[769px]:border-b-[12px] border-b-transparent" />
                     </button>
                 </div>
 
                 {/* Dots / Pagination */}
                 <div className="flex gap-[15px] mt-[10px]">
-                    {Array.from({ length: Math.ceil(items.length / 2) }).map((_, dotIndex) => {
-                        const isActive = (currentIndex / 2) === dotIndex;
+                    {Array.from({ length: Math.ceil(items.length / step) }).map((_, dotIndex) => {
+                        const isActive = Math.floor(currentIndex / step) === dotIndex;
                         return (
                             <span
                                 key={dotIndex}
-                                onClick={() => setCurrentIndex(dotIndex * 2)}
+                                onClick={() => setCurrentIndex(dotIndex * step)}
                                 className={`w-[15px] h-[15px] rounded-full cursor-pointer transition-colors ${isActive ? 'bg-[#999]' : 'bg-[#ccc]'}`}
-                            // Note: Swapped color logic to make active darker/more visible if standard is light gray. Figma usually shows active as primary or dark.
-                            // In previous static code, 3 were #999, 1 was #ccc. Assuming #999 is "active" or "darker gray" vs #ccc "lighter".
-                            // Let's use #999 for active, #ccc for inactive.
                             />
                         );
                     })}

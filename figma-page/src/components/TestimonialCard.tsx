@@ -71,17 +71,19 @@ const TestimonialCard: React.FC<TestimonialCardProps> = ({
             </div>
 
             {/* Image Container */}
-            <div
-                className="relative shrink-0 w-full max-w-[330px] h-auto aspect-[330/245] self-center min-[769px]:self-auto transition-transform duration-300 hover:scale-[1.05]"
-                style={{
-                    boxShadow: '10px 10px 0px 0px rgba(0, 0, 0, 0.25)'
-                }}
-            >
-                <img
-                    src={imageSrc}
-                    alt={imageAlt}
-                    className="w-full h-full object-cover relative z-10"
-                />
+            <div className="w-full px-4 self-start min-[769px]:self-auto min-[769px]:px-0 min-[769px]:w-auto">
+                <div
+                    className="relative shrink-0 w-[calc(100%-10px)] min-[769px]:w-[330px] h-auto aspect-[330/245] transition-transform duration-300 hover:scale-[1.05]"
+                    style={{
+                        boxShadow: '10px 10px 0px 0px rgba(0, 0, 0, 0.25)'
+                    }}
+                >
+                    <img
+                        src={imageSrc}
+                        alt={imageAlt}
+                        className="w-full h-full object-cover relative z-10"
+                    />
+                </div>
             </div>
         </div>
     );

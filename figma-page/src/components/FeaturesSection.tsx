@@ -17,19 +17,31 @@ interface FeaturesSectionProps {
 const FeaturesSection: React.FC<FeaturesSectionProps> = ({ className = '' }) => {
     return (
         <section
-            className={`w-full mx-auto min-h-[48.625rem] h-auto relative ${className}`}
-            style={{
-                backgroundImage: `url(${featuresBg})`,
-                backgroundPosition: 'top center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'contain' // Changed to cover for better responsiveness
-            }}
+            className={`w-full mx-auto min-h-fit h-auto relative overflow-hidden ${className}`}
         >
+            {/* Desktop Background Image */}
+            <div
+                className="absolute inset-0 z-0 hidden min-[769px]:block bg-cover bg-no-repeat"
+                style={{
+                    backgroundImage: `url(${featuresBg})`,
+                    backgroundPosition: 'top center',
+                    backgroundSize: 'contain'
+                }}
+            />
+
+            {/* Mobile CSS Background */}
+            <div
+                className="absolute top-0 left-0 w-full h-[30rem] z-0 min-[769px]:hidden"
+                style={{
+                    background: 'linear-gradient(81deg, rgba(198, 174, 109, 0.40) 2.76%, rgba(231, 222, 185, 0.40) 52.27%, rgba(202, 182, 126, 0.40) 95.93%)',
+                    clipPath: 'polygon(0 0, 100% 0, 100% 90%, 0 100%)'
+                }}
+            />
             {/* Main Content Container */}
             <div id="features-section" className="relative z-10 flex flex-col justify-center items-center w-full max-w-[90rem] pt-[5rem] pb-[7.5rem] gap-[2.5rem] mx-auto">
 
                 {/* Header Group (Logo + Title) */}
-                <div className="flex flex-col items-center">
+                <div className="flex flex-col items-center w-full px-4 min-[769px]:px-0">
                     {/* Logo Image */}
                     <div className="w-[5.0625rem] h-[3.125rem]">
                         <img src={contentLogo1} alt="Content Logo" className="w-full h-full object-contain" />
@@ -38,7 +50,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({ className = '' }) => 
                     {/* Heading Text */}
                     <div className="flex justify-center">
                         <h2
-                            className="font-bold text-[#333333] text-[2.25rem] tracking-[0.1125rem] font-sans leading-normal"
+                            className="font-bold text-[#333333] text-[1.875rem] min-[769px]:text-[2.25rem] tracking-[0.1125rem] font-sans leading-normal"
                         >
                             デザインコースとは？
                         </h2>
@@ -46,36 +58,43 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({ className = '' }) => 
                 </div>
 
                 {/* Content Box */}
-                <div className="flex flex-col min-[769px]:flex-row justify-center items-center gap-[2.5rem]">
+                <div className="flex flex-col-reverse min-[769px]:flex-row justify-center items-center gap-4 min-[769px]:gap-[2.5rem] w-full min-[769px]:px-0">
                     {/* Left Side: Text */}
-                    <div className="flex flex-col items-center min-[769px]:items-start gap-[0.625rem]">
+                    <div className="flex flex-col items-start gap-[0.625rem] w-full min-[769px]:w-auto px-4 min-[769px]:px-0">
                         {/* Line 1 */}
                         {/* Wrapper for the first line with box styling */}
-                        <div className="inline-flex justify-center items-center gap-[0.625rem] px-[0.625rem] py-[0.3125rem] bg-[#333333] self-center min-[769px]:self-start max-w-fit">
-                            <p className="font-bold text-white text-[2.125rem] tracking-[0.10625rem] font-sans leading-normal text-left">
+                        <div className="inline-flex justify-center items-center gap-[0.625rem] px-[0.625rem] py-[0.3125rem] bg-[#333333] self-start max-w-fit">
+                            <p className="font-bold text-white text-[1.625rem] min-[769px]:text-[2.125rem] tracking-[0.05rem] min-[769px]:tracking-[0.10625rem] font-sans leading-normal text-left">
                                 卒業後が"スタート"
                             </p>
                         </div>
                         {/* Line 2 */}
-                        <p className="font-bold text-[2.125rem] tracking-[0.10625rem] font-sans leading-normal text-left flex items-center">
-                            <span className="inline-flex justify-center items-center gap-[0.625rem] px-[0.625rem] py-[0.3125rem] bg-[#333333] text-white">
+                        <p className="font-bold text-[1.625rem] min-[769px]:text-[2.125rem] tracking-[0.05rem] min-[769px]:tracking-[0.10625rem] font-sans leading-normal text-left flex items-center">
+                            <span className="inline-flex justify-center items-center gap-[0.625rem] px-[0.625rem] py-[0.3125rem] bg-[#333333] text-white whitespace-nowrap">
                                 稼ぐサポート
                             </span>
-                            <span className="text-[#333333]">が一生続く</span>
+                            <span className="text-[#333333] whitespace-nowrap">が一生続く</span>
                         </p>
                         {/* Line 3 */}
-                        <p className="font-bold text-[#333333] text-[2.125rem] tracking-[0.10625rem] font-sans leading-normal text-left">
+                        <p className="font-bold text-[#333333] text-[1.625rem] min-[769px]:text-[2.125rem] tracking-[0.05rem] min-[769px]:tracking-[0.10625rem] font-sans leading-normal text-left">
                             Webデザインスクール
                         </p>
                     </div>
 
-                    {/* Right Side: Image */}
-                    <div
-                        className="w-[23.875rem] h-[16.4375rem] max-w-full"
-                        style={{
-                            background: `url(${content1Img}) lightgray 50% / cover no-repeat`
-                        }}
-                    >
+                    {/* Right Side: Image - Aligned left with text, symmetric margin including shadow */}
+                    <div className="w-full px-4 pb-6 min-[769px]:p-0 min-[769px]:w-auto min-[769px]:shrink-0">
+                        <div
+                            className="relative w-[calc(100%-10px)] min-[769px]:w-[23.875rem] h-auto aspect-[382/263] min-[769px]:aspect-auto min-[769px]:h-[16.4375rem] min-[769px]:translate-x-0"
+                            style={{
+                                boxShadow: '10px 10px 0px 0px rgba(0, 0, 0, 0.25)'
+                            }}
+                        >
+                            <img
+                                src={content1Img}
+                                alt="Web Design Course"
+                                className="w-full h-full object-cover"
+                            />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -88,7 +107,7 @@ const FeaturesSection: React.FC<FeaturesSectionProps> = ({ className = '' }) => 
                 </h2>
 
                 {/* Content Container */}
-                <div className="flex flex-col items-start gap-[5rem] w-full max-w-[49.25rem] px-5">
+                <div className="flex flex-col items-start gap-[5rem] w-full max-w-[49.25rem] px-2">
                     {/* Item 1: M.S */}
                     <TestimonialCard
                         imageSrc={content2Img}
