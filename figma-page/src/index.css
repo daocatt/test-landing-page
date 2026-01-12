@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #E85D3F;
+  --color-primary-dark: #D54D2F;
+  --font-family-sans: 'Noto Sans JP', sans-serif;
+}
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  max-width: 90rem;
+  min-width: 375px;
+  margin: 0 auto;
+  padding: 0;
+  overflow-x: hidden;
+}
