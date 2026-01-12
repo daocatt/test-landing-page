@@ -1,5 +1,5 @@
 import React from 'react';
-import ChapterTitle from './ChapterTitle';
+
 
 const FAQSection: React.FC = () => {
     const questions = [

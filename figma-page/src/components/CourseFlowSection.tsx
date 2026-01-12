@@ -3,7 +3,7 @@ import icon1 from '../assets/images/flow-icon-1.svg';
 import icon2 from '../assets/images/flow-icon-2.svg';
 import icon3 from '../assets/images/flow-icon-3.svg';
 import numberBg from '../assets/images/flow-number-bg.svg';
-import ChapterTitle from './ChapterTitle';
+
 
 const CourseFlowSection: React.FC = () => {
     return (
